@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './index.css'; // Import the CSS file
 
 const ChangePassword = () => {
   const [currentPassword, setCurrentPassword] = useState('');
@@ -18,7 +19,7 @@ const ChangePassword = () => {
   };
 
   return (
-    <form onSubmit={handleChangePassword}>
+    <form className="change-password-form" onSubmit={handleChangePassword}>
       <h2>Change Password</h2>
       <input 
         type="password" 

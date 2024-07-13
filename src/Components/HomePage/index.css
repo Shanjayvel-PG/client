@@ -1,0 +1,44 @@
+/* Styles for the main container */
+.home-page-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Styles for the buttons */
+  .home-page-container .button-container {
+    margin-bottom: 20px;
+  }
+  
+  .home-page-container .button-container button {
+    margin-right: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .home-page-container .button-container button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Styles for posts */
+  .home-page-container .post {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .home-page-container .post p {
+    margin: 5px 0;
+  }
+  
+  .home-page-container .post .message {
+    font-weight: bold;
+  }
+  
+  .home-page-container .post .visibility {
+    color: #888;
+  }
+  

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './index.css'; // Import the CSS file
 
 const PostMessages = () => {
   const [message, setMessage] = useState('');
@@ -7,14 +8,13 @@ const PostMessages = () => {
 
   const handlePostMessage = (e) => {
     e.preventDefault();
-    // Handle post message logic here
     const newPost = { message, visibility };
     setPosts([...posts, newPost]);
     setMessage('');
   };
 
   return (
-    <div>
+    <div className="post-messages-container">
       <form onSubmit={handlePostMessage}>
         <h2>Post Message</h2>
         <textarea 
@@ -35,9 +35,9 @@ const PostMessages = () => {
       <div>
         <h2>All Posts</h2>
         {posts.map((post, index) => (
-          <div key={index}>
-            <p>{post.message}</p>
-            <p>Visibility: {post.visibility}</p>
+          <div key={index} className="post">
+            <p className="message">{post.message}</p>
+            <p className="visibility">Visibility: {post.visibility}</p>
           </div>
         ))}
       </div>

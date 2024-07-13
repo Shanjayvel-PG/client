@@ -1,15 +1,14 @@
-// HomePage.js
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import './index.css'; // Import the CSS file
 
 const HomePage = () => {
   const [posts, setPosts] = useState([]);
 
   // Fetch posts from a backend or global state
   useEffect(() => {
-    // Example: Fetching posts from a local storage or API
+    // Example: Fetching posts from local storage or API
     const fetchPosts = async () => {
-      // Replace this with your actual data fetching logic
       const fetchedPosts = JSON.parse(localStorage.getItem('posts')) || [];
       setPosts(fetchedPosts);
     };
@@ -17,9 +16,9 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div>
+    <div className="home-page-container">
       <h2>Home Page</h2>
-      <div>
+      <div className="button-container">
         <Link to="/post-messages">
           <button>Post Message</button>
         </Link>
@@ -33,8 +32,8 @@ const HomePage = () => {
         ) : (
           posts.map((post, index) => (
             <div key={index} className="post">
-              <p>{post.message}</p>
-              <p>Visibility: {post.visibility}</p>
+              <p className="message">{post.message}</p>
+              <p className="visibility">Visibility: {post.visibility}</p>
             </div>
           ))
         )}

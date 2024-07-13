@@ -1,0 +1,44 @@
+/* ChangePassword.css */
+
+/* Styles for the form */
+.change-password-form {
+    max-width: 400px;
+    margin: auto; /* This centers the form horizontally and vertically */
+    padding: 20px;
+    border: 1px solid #ccc;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+.change-password-form h2 {
+  margin-bottom: 20px;
+}
+
+.change-password-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.change-password-form button {
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.change-password-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Optional: Error message styling */
+.change-password-form .error-message {
+  color: red;
+  margin-top: 5px;
+}

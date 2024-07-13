@@ -1,0 +1,66 @@
+/* PostMessages.css */
+
+/* Styles for the main container */
+.post-messages-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Styles for the form */
+  .post-messages-container form {
+    margin-bottom: 20px;
+  }
+  
+  .post-messages-container h2 {
+    margin-bottom: 10px;
+  }
+  
+  .post-messages-container textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    resize: vertical;
+  }
+  
+  .post-messages-container select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+  }
+  
+  .post-messages-container button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .post-messages-container button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Styles for posts */
+  .post-messages-container .post {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .post-messages-container .post p {
+    margin: 5px 0;
+  }
+  
+  .post-messages-container .post .message {
+    font-weight: bold;
+  }
+  
+  .post-messages-container .post .visibility {
+    color: #888;
+  }
+  
