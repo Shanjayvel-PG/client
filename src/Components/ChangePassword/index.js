@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './index.css'; // Import the CSS file
+import './index.css';
 
 const ChangePassword = () => {
   const [currentPassword, setCurrentPassword] = useState('');
@@ -8,13 +8,10 @@ const ChangePassword = () => {
 
   const handleChangePassword = (e) => {
     e.preventDefault();
-    // Validate and handle change password logic here
     if (newPassword !== confirmNewPassword) {
       alert('New passwords do not match');
       return;
     }
-    // Check if new password is one of the last three passwords used
-    // (implement your logic here)
     console.log('Password changed:', { currentPassword, newPassword });
   };
 

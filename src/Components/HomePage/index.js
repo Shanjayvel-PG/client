@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import './index.css'; // Import the CSS file
+import './index.css'; 
 
 const HomePage = () => {
   const [posts, setPosts] = useState([]);
 
-  // Fetch posts from a backend or global state
   useEffect(() => {
-    // Example: Fetching posts from local storage or API
     const fetchPosts = async () => {
       const fetchedPosts = JSON.parse(localStorage.getItem('posts')) || [];
       setPosts(fetchedPosts);

@@ -1,13 +1,9 @@
-/* PostMessages.css */
-
-/* Styles for the main container */
 .post-messages-container {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
   }
   
-  /* Styles for the form */
   .post-messages-container form {
     margin-bottom: 20px;
   }
@@ -45,7 +41,6 @@
     background-color: #0056b3;
   }
   
-  /* Styles for posts */
   .post-messages-container .post {
     margin-bottom: 20px;
     padding: 10px;

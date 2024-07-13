@@ -1,9 +1,6 @@
-/* ChangePassword.css */
-
-/* Styles for the form */
 .change-password-form {
     max-width: 400px;
-    margin: auto; /* This centers the form horizontally and vertically */
+    margin: auto; 
     padding: 20px;
     border: 1px solid #ccc;
     position: absolute;
@@ -37,7 +34,6 @@
   background-color: #0056b3;
 }
 
-/* Optional: Error message styling */
 .change-password-form .error-message {
   color: red;
   margin-top: 5px;

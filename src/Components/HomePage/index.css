@@ -1,11 +1,9 @@
-/* Styles for the main container */
 .home-page-container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
   }
   
-  /* Styles for the buttons */
   .home-page-container .button-container {
     margin-bottom: 20px;
   }
@@ -23,7 +21,6 @@
     background-color: #0056b3;
   }
   
-  /* Styles for posts */
   .home-page-container .post {
     margin-bottom: 20px;
     padding: 10px;

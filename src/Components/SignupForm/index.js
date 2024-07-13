@@ -120,13 +120,11 @@ const SignupForm = () => {
     setshowPasswordNotMatchError(false);
     setShowSubmitError(false);
 
-    // Check if username or passwords are empty
     if (!username || !firstPassword || !secondPassword) {
       setusernamePasswordError(true);
       return;
     }
 
-    // Check if passwords match
     if (firstPassword !== secondPassword) {
       setshowPasswordNotMatchError(true);
       return;
@@ -146,16 +144,12 @@ const SignupForm = () => {
       const response = await fetch(url, options);
 
       if (!response.ok) {
-        // Handle non-successful responses (e.g., HTTP error status codes)
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      // Check if response is JSON
       const contentType = response.headers.get("content-type");
       if (contentType && contentType.includes("application/json")) {
-        // If the response is JSON, parse it
       } else {
-        // If the response is not JSON, handle it as plain text
         const text = await response.text();
         console.log(text);
         console.log("here");
@@ -164,13 +158,11 @@ const SignupForm = () => {
         } else {
           setShowSubmitError(true);
         }
-        // Display error message or handle accordingly
         setShowSubmitError(true);
       }
     } catch (error) {
-      // Handle fetch errors or JSON parsing errors
       console.error("Error during signup:", error);
-      setShowSubmitError(true); // Show generic error message
+      setShowSubmitError(true);
     }
   };
 
