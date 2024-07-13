@@ -105,7 +105,7 @@ const SignupForm = () => {
           className="password-input-field"
           value={secondPassword}
           onChange={onChangeSecondPassword}
-          placeholder="Password"
+          placeholder="Re-Enter Password"
         />
         {showPasswordNotMatchError && (
           <p className="error-message">Password not match</p>
