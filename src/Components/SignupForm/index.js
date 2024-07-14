@@ -9,6 +9,7 @@ const SignupForm = () => {
   const [emailid, setEmailId] = useState("");
   const [firstPassword, setFirstPassword] = useState("");
   const [secondPassword, setSecondPassword] = useState("");
+  const [serverError,setServerError]=useState("")
 
   const [showSubmitError, setShowSubmitError] = useState(false);
 
@@ -129,9 +130,10 @@ const SignupForm = () => {
       setshowPasswordNotMatchError(true);
       return;
     }
+    console.log("working")
 
-    const userDetails = { username, firstPassword };
-    const url = "http://localhost:5000/signup";
+    const userDetails = { username, email: emailid, password: firstPassword };
+    const url = "http://localhost:5000/users/signup";
     const options = {
       method: "POST",
       body: JSON.stringify(userDetails),
@@ -142,29 +144,22 @@ const SignupForm = () => {
 
     try {
       const response = await fetch(url, options);
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
-      const contentType = response.headers.get("content-type");
-      if (contentType && contentType.includes("application/json")) {
+      const data = await response.json()
+      if (response.status === 201) {
+        alert("Signup Success");
+        navigate("/login");
       } else {
-        const text = await response.text();
-        console.log(text);
-        console.log("here");
-        if (text === "User Added Successfully") {
-          navigate("/successSignupPage");
-        } else {
-          setShowSubmitError(true);
-        }
         setShowSubmitError(true);
+        setServerError(data.message);
       }
     } catch (error) {
-      console.error("Error during signup:", error);
+      
       setShowSubmitError(true);
+     
     }
   };
+
+
 
   const onclickLoginButton = () => {
     navigate("/login");
@@ -173,7 +168,7 @@ const SignupForm = () => {
   return (
     <div className="signup-form-container">
       <img
-        src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-logo-img.png"
+        src={Images}
         className="signup-website-logo-mobile-image"
         alt="website logo"
       />
@@ -200,7 +195,7 @@ const SignupForm = () => {
           <p className="error-message">Username or Password is empty</p>
         )}
         {showSubmitError && (
-          <p className="error-message">*Username is already Exits</p>
+          <p className="error-message">{serverError}</p>
         )}
         <div className="already-account-container">
           <p>Already have an account ?</p>

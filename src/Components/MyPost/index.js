@@ -4,7 +4,7 @@ import './index.css';
 import Cookies from 'js-cookie';
 import {  useNavigate } from 'react-router-dom';
 
-const HomePage = () => {
+const MyPost = () => {
   let navigate = useNavigate();
   const [posts, setPosts] = useState([]);
   const handleLogout = () => {
@@ -16,7 +16,7 @@ const HomePage = () => {
     const fetchPosts = async () => {
       try {
         const jwt_token = Cookies.get("jwt_token");
-        const response = await fetch('http://localhost:5000/posts/public', {
+        const response = await fetch('http://localhost:5000/posts/my-posts', {
           method: 'GET',
           headers: {
             "Content-Type": "application/json",
@@ -41,8 +41,8 @@ const HomePage = () => {
     <div className="home-page-container">
       <h2>Home Page</h2>
       <div className="button-container">
-        <Link to="/my-post">
-          <button>My Post</button>
+        <Link to="/">
+          <button>Home</button>
         </Link>
         <Link to="/post-messages">
           <button>Post Message</button>
@@ -60,7 +60,8 @@ const HomePage = () => {
             posts.map((post) => (
               <div key={post.id} className="post">
                 <p className="message">{post.content}</p>
-                <p className="username">Posted by: {post.username}</p>
+                <p className="username">Post Type: {post.is_public === 1 ?  "Public" : "Private"}</p>
+
                 <p className="visibility">Created at: {new Date(post.created_at).toLocaleString()}</p>
               </div>
             ))
@@ -71,4 +72,4 @@ const HomePage = () => {
 };
 
 
-export default HomePage;
+export default MyPost;

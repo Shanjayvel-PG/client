@@ -23,7 +23,6 @@ const LoginForm = () => {
   const onSubmitSuccess = (jwtToken) => {
     Cookies.set("jwt_token", jwtToken, {
       expires: 30,
-      path: "/",
     });
     navigate("/");
   };
@@ -35,20 +34,36 @@ const LoginForm = () => {
 
   const submitForm = async (event) => {
     event.preventDefault();
-    const userDetails = { username, password };
-    const url = "https://apis.ccbp.in/login";
+
+  
+    const userDetails = { email: username, password };
+
+    const url = "http://localhost:5000/users/login";
     const options = {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(userDetails),
     };
-    const response = await fetch(url, options);
-    const data = await response.json();
-    if (response.ok === true) {
-      onSubmitSuccess(data.jwt_token);
-    } else {
-      onSubmitFailure(data.error_msg);
+
+    try {
+      const response = await fetch(url, options);
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log(data)
+        onSubmitSuccess(data.jwt_token);
+      } else {
+        onSubmitFailure(data.error_msg);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      // Handle error, e.g., show an error message to the user
+      onSubmitFailure("Error submitting form. Please try again later.");
     }
   };
+
 
   const renderPasswordField = () => {
     return (
@@ -100,7 +115,7 @@ const LoginForm = () => {
   return (
     <div className="login-form-container">
       <img
-        src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-logo-img.png"
+        src={Images}
         className="login-website-logo-mobile-image"
         alt="website logo"
       />

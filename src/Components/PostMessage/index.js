@@ -1,31 +1,62 @@
 import React, { useState } from 'react';
-import './index.css'; 
+import './index.css';
+import Cookies from 'js-cookie';
+import { Navigate, useNavigate } from "react-router-dom";
 
 const PostMessages = () => {
   const [message, setMessage] = useState('');
   const [visibility, setVisibility] = useState('public');
-  const [posts, setPosts] = useState([]);
+  let navigate = useNavigate();
 
-  const handlePostMessage = (e) => {
+
+  const handlePostMessage = async (e) => {
     e.preventDefault();
-    const newPost = { message, visibility };
-    setPosts([...posts, newPost]);
-    setMessage('');
+    const url = "http://localhost:5000/posts";
+    const jwt_token = Cookies.get("jwt_token");
+    console.log(jwt_token)
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${jwt_token}`,
+      },
+      body: JSON.stringify({ content: message, isPublic: visibility === "public" ? true : false }),
+    };
+
+    try {
+      const response = await fetch(url, options);
+      const data = await response.json();
+
+      if (response.ok) {
+        navigate("/")
+        console.log("Post created successfully:", data);
+      
+      } else {
+        console.error("Failed to create post:", data.error_msg);
+        // Handle error, e.g., show an error message to the user
+      }
+    } catch (error) {
+      console.error("Error creating post:", error);
+      // Handle error, e.g., show an error message to the user
+    }
   };
+
+
+
 
   return (
     <div className="post-messages-container">
       <form onSubmit={handlePostMessage}>
         <h2>Post Message</h2>
-        <textarea 
-          placeholder="Write your message here..." 
-          value={message} 
-          onChange={(e) => setMessage(e.target.value)} 
-          required 
+        <textarea
+          placeholder="Write your message here..."
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          required
         />
-        <select 
-          value={visibility} 
-          onChange={(e) => setVisibility(e.target.value)} 
+        <select
+          value={visibility}
+          onChange={(e) => setVisibility(e.target.value)}
         >
           <option value="public">Public</option>
           <option value="private">Private</option>
@@ -33,13 +64,6 @@ const PostMessages = () => {
         <button type="submit">Post</button>
       </form>
       <div>
-        <h2>All Posts</h2>
-        {posts.map((post, index) => (
-          <div key={index} className="post">
-            <p className="message">{post.message}</p>
-            <p className="visibility">Visibility: {post.visibility}</p>
-          </div>
-        ))}
       </div>
     </div>
   );
