@@ -13,7 +13,6 @@ const PostMessages = () => {
     e.preventDefault();
     const url = "http://localhost:5000/posts";
     const jwt_token = Cookies.get("jwt_token");
-    console.log(jwt_token)
     const options = {
       method: "POST",
       headers: {
@@ -26,14 +25,13 @@ const PostMessages = () => {
     try {
       const response = await fetch(url, options);
       const data = await response.json();
-
       if (response.ok) {
+        alert("Post created successfully:")
         navigate("/")
-        console.log("Post created successfully:", data);
       
       } else {
         console.error("Failed to create post:", data.error_msg);
-        // Handle error, e.g., show an error message to the user
+       
       }
     } catch (error) {
       console.error("Error creating post:", error);
