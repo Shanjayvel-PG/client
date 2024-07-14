@@ -88,7 +88,7 @@ const LoginForm = () => {
     return (
       <>
         <label className="input-label" htmlFor="username">
-          USERNAME
+          USERNAME/EMAIL
         </label>
         <input
           type="text"
@@ -96,7 +96,7 @@ const LoginForm = () => {
           className="username-input-field"
           value={username}
           onChange={onChangeUsername}
-          placeholder="Username"
+          placeholder="Username/Email"
           autocomplete="username"
         />
       </>
