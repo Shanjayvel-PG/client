@@ -53,6 +53,7 @@ const LoginForm = () => {
 
       if (response.ok) {
         onSubmitSuccess(data.jwt_token);
+        console.log(data.jwt_token);
       } else {
         onSubmitFailure(data.error);
       }

@@ -3,6 +3,12 @@
     margin: 0 auto;
     padding: 20px;
   }
+
+  .username-con{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+  }
   
   .home-page-container .button-container {
     display: flex;
