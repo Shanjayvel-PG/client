@@ -52,14 +52,12 @@ const LoginForm = () => {
       const data = await response.json();
 
       if (response.ok) {
-        console.log(data)
         onSubmitSuccess(data.jwt_token);
       } else {
-        onSubmitFailure(data.error_msg);
+        onSubmitFailure(data.error);
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      // Handle error, e.g., show an error message to the user
       onSubmitFailure("Error submitting form. Please try again later.");
     }
   };
@@ -135,7 +133,7 @@ const LoginForm = () => {
         <button type="submit" className="login-button">
           Login
         </button>
-        {showSubmitError && <p className="error-message">*{errorMsg}</p>}
+        {showSubmitError && <p className="error-message">{errorMsg}</p>}
         <div className="new-user-container">
           <p>New user ? Create an account</p>
           <button

@@ -13,6 +13,7 @@ const PostMessages = () => {
     e.preventDefault();
     const url = "http://localhost:5000/posts";
     const jwt_token = Cookies.get("jwt_token");
+    console.log("working")
     const options = {
       method: "POST",
       headers: {
