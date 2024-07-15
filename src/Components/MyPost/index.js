@@ -39,7 +39,7 @@ const MyPost = () => {
   }, []);
   return (
     <div className="home-page-container">
-      <h2>Home Page</h2>
+      <h2>My Post</h2>
       <div className="button-container">
         <Link to="/">
           <button>Home</button>
